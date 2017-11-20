@@ -113,8 +113,6 @@ class NewUser extends Component {
         });
     }
 
-
-
     render() {
         if(this.state.updated) {
             return (
@@ -186,7 +184,7 @@ class NewUser extends Component {
                                     onChange={this.handleChangeUserPassword}
                                     value={this.state.userPassword}
                                     type="password"
-                                    validators={['required', 'pwdMinLength_8']}
+                                    validators={(this.state.userPassword ? ['required', 'pwdMinLength_8'] : [])}
                                     errorMessages={['Campo obligatorio', 'La contraseña debe contener al menos 8 caracteres']}/><br/>
                                 <TextValidator
                                     hintText="Confirmar contraseña"
@@ -196,7 +194,7 @@ class NewUser extends Component {
                                     onChange={this.handleChangeConfirmUserPassword}
                                     value={this.state.userConfirmPassword}
                                     type="password"
-                                    validators={['required', 'isPasswordMatch']}
+                                    validators={(this.state.userPassword ? ['required', 'isPasswordMatch'] : [])}
                                     errorMessages={['Campo obligatorio', 'Las contraseñas deben coincidir']}/><br/>
                             </Paper>
                             <RaisedButton label="Guardar" type="submit" primary={true} style={style.raised} />
