@@ -1,0 +1,34 @@
+body {
+    background-color:#f5f8fa;
+}
+
+.navbar-fixed-bottom {
+    padding-left:256px;
+}
+
+.app-container {
+    overflow-x:hidden;
+    padding-bottom:150px;
+    padding-left:256px;,
+}
+.app-bar {
+    margin-bottom:50px;
+}
+
+.app-container .app-bar {
+    margin:0;
+    position:fixed!important;
+    width:calc(100% - 256px)!important;
+}
+.app-container .app-bar + .container {
+    padding-top:114px;
+}
+
+
+.app-bar.no-element-left {
+    padding-left:50px!important;
+}
+.app-bar.no-element-left h1 {
+    font-weight:bold;
+    text-transform:uppercase;
+}

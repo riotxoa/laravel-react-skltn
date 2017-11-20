@@ -1,0 +1,78 @@
+a,
+.btn {
+    -webkit-transition:all .15s ease-in-out;
+    -moz-transition:all .15s ease-in-out;
+    -ms-transition:all .15s ease-in-out;
+    -o-transition:all .15s ease-in-out;
+    transition:all .15s ease-in-out;
+}
+a:hover, a:focus {
+    text-decoration:none;
+}
+
+.btn,
+.panel,
+.form-control,
+.modal-content {
+    border-radius:0;
+}
+
+.panel-heading {
+    font-weight:bold;
+    text-transform:uppercase;
+}
+
+.absolute {
+    position:absolute!important;
+}
+.relative {
+    position:relative!important;
+}
+
+.valign-center {
+    position:absolute;
+    top:50%;
+
+    -webkit-transform:translateY(-50%);
+    -moz-transform:translateY(-50%);
+    -ms-transform:translateY(-50%);
+    -o-transform:translateY(-50%);
+    transform:translateY(-50%);
+}
+.valign-wrap {
+    position:relative;
+}
+
+.navbar .navbar-right {
+    margin:14px -15px;
+}
+
+form.login .forgot-pwd {
+    display:inline-block;
+    float:right;
+    margin-bottom:0;
+    margin-top:15px;
+    width:100%;
+}
+
+@media screen and (min-width:320px) {
+    .navbar .navbar-header {
+        width:70%;
+    }
+    .navbar .navbar-right {
+        width:35%;
+    }
+}
+@media screen and (min-width:500px) {
+    .navbar .navbar-header,
+    .navbar .navbar-right {
+        width:inherit;
+    }
+    form.login .login button {
+        margin-left:0;
+        width:40%;
+    }
+    form.login .forgot-pwd a {
+        text-align:right;
+    }
+}
