@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Redirect, Link} from 'react-router-dom';
 import { ValidatorForm } from 'react-form-validator-core';
 import { TextValidator} from 'react-material-ui-form-validator';
+import { SelectValidator} from 'react-material-ui-form-validator';
 
 import AppBar from 'material-ui/AppBar';
 import Paper from 'material-ui/Paper';
@@ -9,6 +10,8 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import FontIcon from 'material-ui/FontIcon';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
 
 class NewUser extends Component {
 
@@ -19,7 +22,9 @@ class NewUser extends Component {
 
         this.state = {
             userName: '',
+            userRole: '',
             userEmail: '',
+            roles: [],
             userPassword: '',
             userConfirmPassword: '',
             snack: {
@@ -31,6 +36,7 @@ class NewUser extends Component {
         };
 
         this.handleChangeUserName = this.handleChangeUserName.bind(this);
+        this.handleChangeUserRole = this.handleChangeUserRole.bind(this);
         this.handleChangeUserEmail = this.handleChangeUserEmail.bind(this);
         this.handleChangeUserPassword = this.handleChangeUserPassword.bind(this);
         this.handleChangeConfirmUserPassword = this.handleChangeConfirmUserPassword.bind(this);
@@ -38,10 +44,18 @@ class NewUser extends Component {
         this.handleRequestSnackClose = this.handleRequestSnackClose.bind(this);
     }
     componentDidMount(){
+        axios.get(`/roles`)
+        .then(response => {
+            this.setState({ roles: response.data });
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
         if(!this.state.new) {
             axios.get(`/users/${this.props.match.params.number}/edit`)
             .then(response => {
-                this.setState({ userName: response.data.name, userEmail: response.data.email });
+                this.setState({ userName: response.data.name, userEmail: response.data.email, userRole: response.data.role.id });
             })
             .catch(function (error) {
                 console.log(error);
@@ -51,6 +65,12 @@ class NewUser extends Component {
     handleChangeUserName(e){
         this.setState({
             userName: e.target.value
+        })
+    }
+    handleChangeUserRole(e, index, value){
+        e.preventDefault();
+        this.setState({
+            userRole: value
         })
     }
     handleChangeUserEmail(e){
@@ -73,6 +93,7 @@ class NewUser extends Component {
         if(this.state.userPassword === this.state.userConfirmPassword) {
             const users = {
                 name: this.state.userName,
+                role: this.state.userRole,
                 email: this.state.userEmail,
                 password: this.state.userPassword
             }
@@ -147,6 +168,12 @@ class NewUser extends Component {
                 return true;
             });
 
+            let roles = this.state.roles.map((val, key) => {
+                return (
+                    <MenuItem key={key} value={val.id} primaryText={val.name.toUpperCase()} />
+                );
+            });
+
             return (
                 <div>
                     <AppBar
@@ -167,6 +194,18 @@ class NewUser extends Component {
                                     value={this.state.userName}
                                     validators={['required']}
                                     errorMessages={['Campo obligatorio']}/><br/>
+                                <SelectValidator
+                                    hintText="Selecciona un perfil"
+                                    floatingLabelText="Perfil"
+                                    floatingLabelFixed={true}
+                                    name="userRole"
+                                    value={this.state.userRole}
+                                    onChange={this.handleChangeUserRole}
+                                    validators={['required']}
+                                    errorMessages={['Campo obligatorio']}
+                                >
+                                {roles}
+                                </SelectValidator><br/>
                                 <TextValidator
                                     hintText="user@example.com"
                                     floatingLabelText="Correo electrónico"

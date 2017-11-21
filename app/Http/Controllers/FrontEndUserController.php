@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Role;
 use Illuminate\Http\Request;
 
 class FrontEndUserController extends Controller
@@ -20,11 +21,19 @@ class FrontEndUserController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $request->user()->authorizeRoles(['root', 'admin']);
+
         $users = User::all();
+
+        foreach($users as $key => $user) {
+            $role = $user->roles()->first();
+            $users[$key]->role = $role;
+        }
         return response()->json($users);
     }
 
@@ -46,12 +55,19 @@ class FrontEndUserController extends Controller
      */
     public function store(Request $request)
     {
+        $request->user()->authorizeRoles(['root', 'admin']);
+
         $user = new User([
           'name' => $request->get('name'),
           'email' => $request->get('email'),
-          'password' => $request->get('password'),
+          'password' => bcrypt($request->get('password')),
         ]);
         $user->save();
+
+        $role_id = $request->get('role');
+        $role = Role::where('id', $role_id)->first();
+        $user->roles()->attach($role);
+
         return response()->json('User Successfully added');
     }
 
@@ -72,9 +88,12 @@ class FrontEndUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
+        $request->user()->authorizeRoles(['root', 'admin']);
+
         $user = User::find($id);
+        $user->role = $user->roles()->first();
         return response()->json($user);
     }
 
@@ -87,12 +106,20 @@ class FrontEndUserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->user()->authorizeRoles(['root', 'admin']);
+
         $user = User::find($id);
         $user->name = $request->get('name');
         $user->email = $request->get('email');
         if($request->get('password'))
-            $user->password = $request->get('password');
+            $user->password = bcrypt($request->get('password'));
         $user->save();
+
+        $role_id = $request->get('role');
+        $role_new = Role::where('id', $role_id)->first();
+        $role_old = $user->roles()->first();
+        $user->roles()->detach($role_old);
+        $user->roles()->attach($role_new);
 
         return response()->json('User Successfully Updated');
     }
@@ -103,9 +130,13 @@ class FrontEndUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
+        $request->user()->authorizeRoles(['root', 'admin']);
+
         $user = User::find($id);
+        $role = $user->roles()->first();
+        $user->roles()->detach($role);
         $user->delete();
 
         return response()->json('User Successfully Deleted');

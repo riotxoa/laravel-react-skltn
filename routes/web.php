@@ -20,3 +20,4 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 // Route::get('/users', 'FrontEndUserController@index');
 Route::resource('/users', 'FrontEndUserController');
+Route::resource('/roles', 'FrontEndRoleController');

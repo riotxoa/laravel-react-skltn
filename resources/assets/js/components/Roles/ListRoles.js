@@ -14,7 +14,7 @@ import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui
 import Snackbar from 'material-ui/Snackbar';
 import FontIcon from 'material-ui/FontIcon';
 
-class ListUsers extends Component {
+class ListRoles extends Component {
 
     constructor(props) {
         super(props);
@@ -27,18 +27,18 @@ class ListUsers extends Component {
                 message: (this.props.location.snack ? this.props.location.snack.message : ''),
             },
             selected: [],
-            users: [],
+            roles: [],
         };
 
         this.handleRowSelection = this.handleRowSelection.bind(this);
-        this.handleDeleteUser = this.handleDeleteUser.bind(this);
+        this.handleDeleteRole = this.handleDeleteRole.bind(this);
         this.handleRequestSnackClose = this.handleRequestSnackClose.bind(this);
     }
 
     componentDidMount(){
-        axios.get('/users')
+        axios.get('/roles')
         .then(response => {
-            this.setState({ users: response.data });
+            this.setState({ roles: response.data });
         })
         .catch(function (error) {
             (error);
@@ -55,9 +55,9 @@ class ListUsers extends Component {
         });
     }
 
-    handleDeleteUser(){
+    handleDeleteRole(){
         let index = this.state.selected;
-        let id = this.state.users[index].id;
+        let id = this.state.roles[index].id;
 
         this.setState({
             delete_id: id,
@@ -102,18 +102,18 @@ class ListUsers extends Component {
         let dcmDelete = () => {
             this.setState({ smShow: false });
 
-            let uri = `/users/` + this.state.delete_id;
+            let uri = `/roles/` + this.state.delete_id;
 
             axios.delete(uri).then((response) => {
-                let usersArr = this.state.users;
-                usersArr.splice(this.state.delete_index, 1);
+                let rolesArr = this.state.roles;
+                rolesArr.splice(this.state.delete_index, 1);
                 this.setState({
                     snack: {
-                        message: 'Usuario borrado',
+                        message: 'Perfil borrado',
                         open: true
                     },
                     selected: [],
-                    users: usersArr
+                    roles: rolesArr
                 });
             });
         }
@@ -123,12 +123,11 @@ class ListUsers extends Component {
         ];
         /* /Configuración de la ventana modal para confirmar borrado */
 
-        let users = this.state.users.map((val, key) => {
+        let roles = this.state.roles.map((val, key) => {
             return (
                 <TableRow key={key} selected={this.isSelected(key)}>
-                    <TableRowColumn>{val.name}</TableRowColumn>
-                    <TableRowColumn>{val.email}</TableRowColumn>
-                    <TableRowColumn>{(val.role ? val.role.name.toUpperCase() : '')}</TableRowColumn>
+                    <TableRowColumn>{val.name.toUpperCase()}</TableRowColumn>
+                    <TableRowColumn>{val.description}</TableRowColumn>
                 </TableRow>
             );
         });
@@ -139,8 +138,8 @@ class ListUsers extends Component {
                     <ToolbarGroup key={11} firstChild={true}>
                     </ToolbarGroup>
                     <ToolbarGroup key={12}>
-                        <NavLink to={"/usuarios/editar/"+this.state.users[this.state.selected].id}><FlatButton label="Editar" title="Editar usuario" primary={true} style={styles.flatNew} icon={<FontIcon className="fa fa-pencil" style={{fontSize:18}} />}/></NavLink>
-                        <FlatButton label="Borrar" title="Borrar usuario" primary={true} style={styles.flatNew}  onClick={this.handleDeleteUser} icon={<FontIcon className="fa fa-trash" style={{fontSize:18}} />} />
+                        <NavLink to={"/roles/editar/"+this.state.roles[this.state.selected].id}><FlatButton label="Editar" title="Editar perfil" primary={true} style={styles.flatNew} icon={<FontIcon className="fa fa-pencil" style={{fontSize:18}} />}/></NavLink>
+                        <FlatButton label="Borrar" title="Borrar perfil" primary={true} style={styles.flatNew}  onClick={this.handleDeleteRole} icon={<FontIcon className="fa fa-trash" style={{fontSize:18}} />} />
                     </ToolbarGroup>
                 </Toolbar>
             ]
@@ -150,7 +149,7 @@ class ListUsers extends Component {
                     <ToolbarGroup key={21} firstChild={true}>
                     </ToolbarGroup>
                     <ToolbarGroup key={22}>
-                        <NavLink to="/usuarios/nuevo"><FlatButton label="Nuevo" title="Nuevo usuario" primary={true} style={styles.flatNew} icon={<FontIcon className="fa fa-plus-circle" style={{fontSize:18}} />}  /></NavLink>
+                        <NavLink to="/roles/nuevo"><FlatButton label="Nuevo" title="Nuevo perfil" primary={true} style={styles.flatNew} icon={<FontIcon className="fa fa-plus-circle" style={{fontSize:18}} />}  /></NavLink>
                     </ToolbarGroup>
                 </Toolbar>
             ]
@@ -159,7 +158,7 @@ class ListUsers extends Component {
         return(
             <div>
                 <AppBar
-                    title="Usuarios"
+                    title="Perfiles"
                     iconElementLeft={<div></div>}
                     className="app-bar no-element-left"
                 />
@@ -168,23 +167,22 @@ class ListUsers extends Component {
                     <Table onRowSelection={this.handleRowSelection}>
                         <TableHeader>
                             <TableRow>
-                                <TableHeaderColumn colSpan="3" style={{padding:0}}>
+                                <TableHeaderColumn colSpan="2" style={{padding:0}}>
                                     {toolbar}
                                 </TableHeaderColumn>
                             </TableRow>
                             <TableRow>
-                                <TableHeaderColumn>Nombre y Apellidos</TableHeaderColumn>
-                                <TableHeaderColumn>Correo Electrónico</TableHeaderColumn>
-                                <TableHeaderColumn>Perfil</TableHeaderColumn>
+                                <TableHeaderColumn>Nombre del Perfil</TableHeaderColumn>
+                                <TableHeaderColumn>Descripción</TableHeaderColumn>
                             </TableRow>
                         </TableHeader>
                         <TableBody deselectOnClickaway={false}>
-                            {users}
+                            {roles}
                         </TableBody>
                     </Table>
 
-                    <NavLink to="/usuarios/nuevo">
-                        <FloatingActionButton title="Añadir usuario" style={styles.floating}>
+                    <NavLink to="/roles/nuevo">
+                        <FloatingActionButton title="Añadir perfil" style={styles.floating}>
                             <ContentAdd />
                         </FloatingActionButton>
                     </NavLink>
@@ -205,4 +203,4 @@ class ListUsers extends Component {
     }
 }
 
-export default ListUsers;
+export default ListRoles;
