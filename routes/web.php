@@ -21,3 +21,4 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/user/logged', 'FrontEndUserController@logged');
 Route::resource('/users', 'FrontEndUserController');
 Route::resource('/roles', 'FrontEndRoleController');
+Route::resource('/clients', 'ClientController');

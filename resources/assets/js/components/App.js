@@ -6,6 +6,8 @@ import ListUsers from './Users/ListUsers'
 import FormUser from './Users/FormUser';
 import ListRoles from './Roles/ListRoles'
 import FormRole from './Roles/FormRole';
+import ListClients from './Clients/ListClients'
+import FormClient from './Clients/FormClient';
 
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
@@ -84,6 +86,9 @@ class App extends React.Component {
                                 <Route exact path='/perfiles' component={Root(ListRoles)} />
                                 <Route exact path='/perfiles/nuevo' render={(props) => <FormRole title="Nuevo" />} />
                                 <Route path='/perfiles/editar/:number' component={Root(FormRole)} />
+                                <Route exact path='/clientes' component={User(ListClients)} />
+                                <Route exact path='/clientes/nuevo' render={(props) => <FormClient title="Nuevo" />} />
+                                <Route path='/clientes/editar/:number' component={Root(FormClient)} />
                             </Switch>
                         </div>
                     </div>
@@ -104,9 +109,7 @@ const Sidebar = (props) => (
             className="app-bar"
         />
         <List>
-            <NavLink exact activeClassName="active" to="/">
-                <ListItem leftIcon={<FontIcon className="fa fa-home" />} primaryText="Inicio" />
-            </NavLink>
+            <ListItem primaryText="Inicio" containerElement={<Link to="/" />} leftIcon={<FontIcon className="fa fa-home" />} />
             <Adminbar admin={props.admin}/>
             <Userbar />
         </List>
@@ -122,8 +125,7 @@ const Adminbar = (props) => (
         nestedItems={props.admin} />
 );
 const Userbar = (props) => (
-    <div>
-    </div>
+    <ListItem primaryText="Clientes" containerElement={<Link to="/clientes" />} leftIcon={<FontIcon className="fa fa-home" />} />
 );
 
 const ErrorAuth = (props) => (
