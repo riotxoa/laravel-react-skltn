@@ -100,7 +100,7 @@ class NewRole extends Component {
         if(this.state.updated) {
             return (
                 <Redirect to={{
-                    pathname: "/roles",
+                    pathname: "/perfiles",
                     snack: {
                         open: this.state.snack.open,
                         message: this.state.snack.message,
@@ -127,7 +127,7 @@ class NewRole extends Component {
                         className="app-bar no-element-left"
                     />
                     <div className="container">
-                        <Link to="/roles" className="btn btn-success"><FlatButton label="Volver" title="Volver" primary={true} style={style.flat} icon={<FontIcon className="fa fa-step-backward" style={{fontSize:18}} />} /></Link>
+                        <Link to="/perfiles" className="btn btn-success"><FlatButton label="Volver" title="Volver" primary={true} style={style.flat} icon={<FontIcon className="fa fa-step-backward" style={{fontSize:18}} />} /></Link>
                         <ValidatorForm ref="form" onSubmit={this.handleSubmit} onError={errors => console.log(errors)} style={{marginTop:48}}>
                             <Paper zDepth={1} rounded={false} style={{padding:25, paddingBottom:50}} >
                                 <TextValidator
@@ -150,7 +150,7 @@ class NewRole extends Component {
                                     errorMessages={['Campo obligatorio']}/><br/>
                             </Paper>
                             <RaisedButton label="Guardar" type="submit" primary={true} style={style.raised} />
-                            <Link to="/roles"><RaisedButton label="Cancelar" style={style.raised} /></Link>
+                            <Link to="/perfiles"><RaisedButton label="Cancelar" style={style.raised} /></Link>
                         </ValidatorForm>
                     </div>
                 </div>

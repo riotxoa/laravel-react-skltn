@@ -25,7 +25,7 @@ class FrontEndRoleController extends Controller
      */
     public function index(Request $request)
     {
-        $request->user()->authorizeRoles(['root']);
+        $request->user()->authorizeRoles(['root', 'admin']);
 
         $roles = Role::all();
         return response()->json($roles);

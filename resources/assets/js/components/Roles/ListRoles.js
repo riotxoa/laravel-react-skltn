@@ -138,7 +138,7 @@ class ListRoles extends Component {
                     <ToolbarGroup key={11} firstChild={true}>
                     </ToolbarGroup>
                     <ToolbarGroup key={12}>
-                        <NavLink to={"/roles/editar/"+this.state.roles[this.state.selected].id}><FlatButton label="Editar" title="Editar perfil" primary={true} style={styles.flatNew} icon={<FontIcon className="fa fa-pencil" style={{fontSize:18}} />}/></NavLink>
+                        <NavLink to={"/perfiles/editar/"+this.state.roles[this.state.selected].id}><FlatButton label="Editar" title="Editar perfil" primary={true} style={styles.flatNew} icon={<FontIcon className="fa fa-pencil" style={{fontSize:18}} />}/></NavLink>
                         <FlatButton label="Borrar" title="Borrar perfil" primary={true} style={styles.flatNew}  onClick={this.handleDeleteRole} icon={<FontIcon className="fa fa-trash" style={{fontSize:18}} />} />
                     </ToolbarGroup>
                 </Toolbar>
@@ -149,7 +149,7 @@ class ListRoles extends Component {
                     <ToolbarGroup key={21} firstChild={true}>
                     </ToolbarGroup>
                     <ToolbarGroup key={22}>
-                        <NavLink to="/roles/nuevo"><FlatButton label="Nuevo" title="Nuevo perfil" primary={true} style={styles.flatNew} icon={<FontIcon className="fa fa-plus-circle" style={{fontSize:18}} />}  /></NavLink>
+                        <NavLink to="/perfiles/nuevo"><FlatButton label="Nuevo" title="Nuevo perfil" primary={true} style={styles.flatNew} icon={<FontIcon className="fa fa-plus-circle" style={{fontSize:18}} />}  /></NavLink>
                     </ToolbarGroup>
                 </Toolbar>
             ]
@@ -181,7 +181,7 @@ class ListRoles extends Component {
                         </TableBody>
                     </Table>
 
-                    <NavLink to="/roles/nuevo">
+                    <NavLink to="/perfiles/nuevo">
                         <FloatingActionButton title="Añadir perfil" style={styles.floating}>
                             <ContentAdd />
                         </FloatingActionButton>

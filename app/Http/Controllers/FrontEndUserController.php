@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FrontEndUserController extends Controller
 {
@@ -140,6 +141,19 @@ class FrontEndUserController extends Controller
         $user->delete();
 
         return response()->json('User Successfully Deleted');
+     }
+
+     /**
+      * Recovers a User by token
+      *
+      * @return \Illuminate\Http\Response
+      */
+     public function logged()
+     {
+         $id = Auth::id();
+         $user = User::find($id);
+         $user->role = $user->roles()->first();
+         return response()->json($user);
      }
 
 }
