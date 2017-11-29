@@ -75963,20 +75963,19 @@ exports.default = new Typography();
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Home__ = __webpack_require__(417);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Users_ListUsers__ = __webpack_require__(435);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Users_ListUsersDataTabla__ = __webpack_require__(726);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Users_FormUser__ = __webpack_require__(460);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Roles_ListRoles__ = __webpack_require__(519);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Roles_FormRole__ = __webpack_require__(520);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Clients_ListClients__ = __webpack_require__(521);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Clients_FormClient__ = __webpack_require__(710);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_material_ui_AppBar__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_material_ui_AppBar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_material_ui_AppBar__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_material_ui_Drawer__ = __webpack_require__(711);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_material_ui_Drawer___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_material_ui_Drawer__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_material_ui_List__ = __webpack_require__(713);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_material_ui_List___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_material_ui_List__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_material_ui_FontIcon__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_material_ui_FontIcon___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_material_ui_FontIcon__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Users_FormUser__ = __webpack_require__(460);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Roles_ListRoles__ = __webpack_require__(519);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Roles_FormRole__ = __webpack_require__(520);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Clients_ListClients__ = __webpack_require__(521);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Clients_FormClient__ = __webpack_require__(710);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_material_ui_AppBar__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_material_ui_AppBar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_material_ui_AppBar__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_material_ui_Drawer__ = __webpack_require__(711);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_material_ui_Drawer___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_material_ui_Drawer__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_material_ui_List__ = __webpack_require__(713);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_material_ui_List___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_material_ui_List__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_material_ui_FontIcon__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_material_ui_FontIcon___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_material_ui_FontIcon__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -75984,7 +75983,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 
 
 
@@ -76067,10 +76065,9 @@ var App = function (_React$Component) {
 
                 var admin_nestedItems = [];
                 if (this.isRoot()) {
-                    admin_nestedItems.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_12_material_ui_List__["ListItem"], { key: 1, primaryText: 'Perfiles', containerElement: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */], { to: '/perfiles' }), leftIcon: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_13_material_ui_FontIcon___default.a, { className: 'fa fa-user-circle' }) }));
+                    admin_nestedItems.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_material_ui_List__["ListItem"], { key: 1, primaryText: 'Perfiles', containerElement: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */], { to: '/perfiles' }), leftIcon: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_12_material_ui_FontIcon___default.a, { className: 'fa fa-user-circle' }) }));
                 }
-                admin_nestedItems.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_12_material_ui_List__["ListItem"], { key: 2, primaryText: 'Usuarios', containerElement: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */], { to: '/usuarios' }), leftIcon: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_13_material_ui_FontIcon___default.a, { className: 'fa fa-users' }) }));
-                admin_nestedItems.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_12_material_ui_List__["ListItem"], { key: 3, primaryText: 'Usuarios NTRK', containerElement: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */], { to: '/usuariosntrk' }), leftIcon: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_13_material_ui_FontIcon___default.a, { className: 'fa fa-users' }) }));
+                admin_nestedItems.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_material_ui_List__["ListItem"], { key: 2, primaryText: 'Usuarios', containerElement: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */], { to: '/usuarios' }), leftIcon: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_12_material_ui_FontIcon___default.a, { className: 'fa fa-users' }) }));
 
                 return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["a" /* BrowserRouter */],
@@ -76079,7 +76076,7 @@ var App = function (_React$Component) {
                         'div',
                         null,
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            __WEBPACK_IMPORTED_MODULE_11_material_ui_Drawer___default.a,
+                            __WEBPACK_IMPORTED_MODULE_10_material_ui_Drawer___default.a,
                             { open: true, width: 256 },
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Sidebar, { admin: admin_nestedItems })
                         ),
@@ -76091,21 +76088,20 @@ var App = function (_React$Component) {
                                 null,
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["e" /* Route */], { exact: true, path: '/', component: User(__WEBPACK_IMPORTED_MODULE_2__Home__["a" /* default */]) }),
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["e" /* Route */], { exact: true, path: '/usuarios', component: Admin(__WEBPACK_IMPORTED_MODULE_3__Users_ListUsers__["a" /* default */]) }),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["e" /* Route */], { exact: true, path: '/usuariosntrk', component: Admin(__WEBPACK_IMPORTED_MODULE_4__Users_ListUsersDataTabla__["a" /* default */]) }),
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["e" /* Route */], { exact: true, path: '/usuarios/nuevo', render: function render(props) {
-                                        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__Users_FormUser__["a" /* default */], { title: 'Nuevo' });
+                                        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__Users_FormUser__["a" /* default */], { title: 'Nuevo' });
                                     } }),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["e" /* Route */], { path: '/usuarios/editar/:number', component: Admin(__WEBPACK_IMPORTED_MODULE_5__Users_FormUser__["a" /* default */]) }),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["e" /* Route */], { exact: true, path: '/perfiles', component: Root(__WEBPACK_IMPORTED_MODULE_6__Roles_ListRoles__["a" /* default */]) }),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["e" /* Route */], { path: '/usuarios/editar/:number', component: Admin(__WEBPACK_IMPORTED_MODULE_4__Users_FormUser__["a" /* default */]) }),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["e" /* Route */], { exact: true, path: '/perfiles', component: Root(__WEBPACK_IMPORTED_MODULE_5__Roles_ListRoles__["a" /* default */]) }),
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["e" /* Route */], { exact: true, path: '/perfiles/nuevo', render: function render(props) {
-                                        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__Roles_FormRole__["a" /* default */], { title: 'Nuevo' });
+                                        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__Roles_FormRole__["a" /* default */], { title: 'Nuevo' });
                                     } }),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["e" /* Route */], { path: '/perfiles/editar/:number', component: Root(__WEBPACK_IMPORTED_MODULE_7__Roles_FormRole__["a" /* default */]) }),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["e" /* Route */], { exact: true, path: '/clientes', component: User(__WEBPACK_IMPORTED_MODULE_8__Clients_ListClients__["a" /* default */]) }),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["e" /* Route */], { path: '/perfiles/editar/:number', component: Root(__WEBPACK_IMPORTED_MODULE_6__Roles_FormRole__["a" /* default */]) }),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["e" /* Route */], { exact: true, path: '/clientes', component: User(__WEBPACK_IMPORTED_MODULE_7__Clients_ListClients__["a" /* default */]) }),
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["e" /* Route */], { exact: true, path: '/clientes/nuevo', render: function render(props) {
-                                        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9__Clients_FormClient__["a" /* default */], { title: 'Nuevo' });
+                                        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_8__Clients_FormClient__["a" /* default */], { title: 'Nuevo' });
                                     } }),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["e" /* Route */], { path: '/clientes/editar/:number', component: Root(__WEBPACK_IMPORTED_MODULE_9__Clients_FormClient__["a" /* default */]) })
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["e" /* Route */], { path: '/clientes/editar/:number', component: Root(__WEBPACK_IMPORTED_MODULE_8__Clients_FormClient__["a" /* default */]) })
                             )
                         )
                     )
@@ -76123,14 +76119,14 @@ var Sidebar = function Sidebar(props) {
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
         { className: 'side-bar' },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_10_material_ui_AppBar___default.a, {
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9_material_ui_AppBar___default.a, {
             title: 'Skeleton',
             className: 'app-bar'
         }),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            __WEBPACK_IMPORTED_MODULE_12_material_ui_List__["List"],
+            __WEBPACK_IMPORTED_MODULE_11_material_ui_List__["List"],
             null,
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_12_material_ui_List__["ListItem"], { primaryText: 'Inicio', containerElement: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */], { to: '/' }), leftIcon: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_13_material_ui_FontIcon___default.a, { className: 'fa fa-home' }) }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_material_ui_List__["ListItem"], { primaryText: 'Inicio', containerElement: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */], { to: '/' }), leftIcon: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_12_material_ui_FontIcon___default.a, { className: 'fa fa-home' }) }),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Adminbar, { admin: props.admin }),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Userbar, null)
         )
@@ -76138,9 +76134,9 @@ var Sidebar = function Sidebar(props) {
 };
 
 var Adminbar = function Adminbar(props) {
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_12_material_ui_List__["ListItem"], {
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_material_ui_List__["ListItem"], {
         primaryText: 'Administraci\xF3n',
-        leftIcon: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_13_material_ui_FontIcon___default.a, { className: 'fa fa-cogs' }),
+        leftIcon: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_12_material_ui_FontIcon___default.a, { className: 'fa fa-cogs' }),
         initiallyOpen: false,
         primaryTogglesNestedList: true,
         nestedItems: props.admin });
@@ -76149,7 +76145,7 @@ var Userbar = function Userbar(props) {
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
         null,
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_12_material_ui_List__["ListItem"], { primaryText: 'Clientes', containerElement: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */], { to: '/clientes' }), leftIcon: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_13_material_ui_FontIcon___default.a, { className: 'fa fa-shopping-bag' }) })
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_material_ui_List__["ListItem"], { primaryText: 'Clientes', containerElement: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Link */], { to: '/clientes' }), leftIcon: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_12_material_ui_FontIcon___default.a, { className: 'fa fa-shopping-bag' }) })
     );
 };
 
@@ -81357,29 +81353,7 @@ exports.default = Paper;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_material_ui_AppBar__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_material_ui_AppBar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_material_ui_AppBar__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_material_ui_FlatButton__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_material_ui_FlatButton___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_material_ui_FlatButton__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_material_ui_RaisedButton__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_material_ui_RaisedButton___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_material_ui_RaisedButton__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_material_ui_Table__ = __webpack_require__(73);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_material_ui_Table___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_material_ui_Table__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_material_ui_Dialog__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_material_ui_Dialog___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_material_ui_Dialog__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_material_ui_FloatingActionButton__ = __webpack_require__(90);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_material_ui_FloatingActionButton___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_material_ui_FloatingActionButton__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_material_ui_svg_icons_content_add__ = __webpack_require__(91);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_material_ui_svg_icons_content_add___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_material_ui_svg_icons_content_add__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_material_ui_Toolbar__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_material_ui_Toolbar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_material_ui_Toolbar__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_material_ui_Snackbar__ = __webpack_require__(75);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_material_ui_Snackbar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_material_ui_Snackbar__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_material_ui_FontIcon__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_material_ui_FontIcon___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_material_ui_FontIcon__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Interface_DataTabla__ = __webpack_require__(704);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -81387,18 +81361,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -81412,19 +81374,8 @@ var ListUsers = function (_Component) {
         var _this = _possibleConstructorReturn(this, (ListUsers.__proto__ || Object.getPrototypeOf(ListUsers)).call(this, props));
 
         _this.state = {
-            value: '',
-            smShow: false,
-            snack: {
-                open: _this.props.location.snack ? _this.props.location.snack.open : false,
-                message: _this.props.location.snack ? _this.props.location.snack.message : ''
-            },
-            selected: [],
-            users: []
+            data: []
         };
-
-        _this.handleRowSelection = _this.handleRowSelection.bind(_this);
-        _this.handleDeleteUser = _this.handleDeleteUser.bind(_this);
-        _this.handleRequestSnackClose = _this.handleRequestSnackClose.bind(_this);
         return _this;
     }
 
@@ -81433,231 +81384,45 @@ var ListUsers = function (_Component) {
         value: function componentDidMount() {
             var _this2 = this;
 
-            __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get('/users').then(function (response) {
-                _this2.setState({ users: response.data });
+            axios.get('/users').then(function (response) {
+                _this2.setState({
+                    data: response.data
+                });
             }).catch(function (error) {
                 error;
             });
         }
     }, {
-        key: 'isSelected',
-        value: function isSelected(index) {
-            return this.state.selected.indexOf(index) !== -1;
-        }
-    }, {
-        key: 'handleRowSelection',
-        value: function handleRowSelection(selectedRows) {
-            this.setState({
-                selected: selectedRows
-            });
-        }
-    }, {
-        key: 'handleDeleteUser',
-        value: function handleDeleteUser() {
-            var index = this.state.selected;
-            var id = this.state.users[index].id;
-
-            this.setState({
-                delete_id: id,
-                delete_index: index,
-                smShow: true
-            });
-        }
-    }, {
-        key: 'handleRequestSnackClose',
-        value: function handleRequestSnackClose() {
-            this.setState({
-                snack: {
-                    open: false,
-                    message: ''
-                }
-            });
-        }
-    }, {
         key: 'render',
         value: function render() {
-            var _this3 = this;
 
-            var styles = {
-                dialog: {
-                    marginBottom: 12,
-                    marginLeft: 12,
-                    marginTop: 12
-                },
-                floating: {
-                    bottom: 75,
-                    float: 'right',
-                    marginTop: 20,
-                    position: 'fixed',
-                    right: 75
-                },
-                toolbar: {
-                    backgroundColor: '#FFFFFF'
-                },
-                flatNew: {
-                    float: 'right'
-                }
+            var TABLE_COLUMNS = [{
+                key: 'name',
+                label: 'Nombre',
+                sortable: true
+            }, {
+                key: 'email',
+                label: 'Correo electrónico',
+                sortable: true
+            }, {
+                key: 'role.description',
+                label: 'Perfil',
+                sortable: true
+            }];
 
-                /* Configuración de la ventana modal para confirmar borrado */
-            };var dcmClose = function dcmClose() {
-                return _this3.setState({ smShow: false });
-            };
-            var dcmDelete = function dcmDelete() {
-                _this3.setState({ smShow: false });
+            if (this.state.data.length == 0) return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', null);
 
-                var uri = '/users/' + _this3.state.delete_id;
-
-                __WEBPACK_IMPORTED_MODULE_2_axios___default.a.delete(uri).then(function (response) {
-                    var usersArr = _this3.state.users;
-                    usersArr.splice(_this3.state.delete_index, 1);
-                    _this3.setState({
-                        snack: {
-                            message: 'Usuario borrado',
-                            open: true
-                        },
-                        selected: [],
-                        users: usersArr
-                    });
-                });
-            };
-            var actions = [__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_material_ui_RaisedButton___default.a, { label: 'Cancelar', style: styles.dialog, keyboardFocused: true, onClick: dcmClose }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_material_ui_RaisedButton___default.a, { label: 'Borrar', primary: true, style: styles.dialog, onClick: dcmDelete })];
-            /* /Configuración de la ventana modal para confirmar borrado */
-
-            var users = this.state.users.map(function (val, key) {
-                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    __WEBPACK_IMPORTED_MODULE_6_material_ui_Table__["TableRow"],
-                    { key: key, selected: _this3.isSelected(key) },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        __WEBPACK_IMPORTED_MODULE_6_material_ui_Table__["TableRowColumn"],
-                        null,
-                        val.name
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        __WEBPACK_IMPORTED_MODULE_6_material_ui_Table__["TableRowColumn"],
-                        null,
-                        val.email
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        __WEBPACK_IMPORTED_MODULE_6_material_ui_Table__["TableRowColumn"],
-                        null,
-                        val.role ? val.role.name.toUpperCase() : ''
-                    )
-                );
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__Interface_DataTabla__["a" /* default */], {
+                singular: "usuario",
+                plural: "usuarios",
+                route: "usuarios",
+                api: "users",
+                columns: TABLE_COLUMNS,
+                data: this.state.data,
+                searchText: "Buscar",
+                multiSelectable: false,
+                importCSV: false
             });
-
-            var toolbar = this.state.selected.length ? [__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_10_material_ui_Toolbar__["Toolbar"],
-                { key: 1, style: styles.toolbar },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_10_material_ui_Toolbar__["ToolbarGroup"], { key: 11, firstChild: true }),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    __WEBPACK_IMPORTED_MODULE_10_material_ui_Toolbar__["ToolbarGroup"],
-                    { key: 12 },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* NavLink */],
-                        { to: "/usuarios/editar/" + this.state.users[this.state.selected].id },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_material_ui_FlatButton___default.a, { label: 'Editar', title: 'Editar usuario', primary: true, style: styles.flatNew, icon: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_12_material_ui_FontIcon___default.a, { className: 'fa fa-pencil', style: { fontSize: 18 } }) })
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_material_ui_FlatButton___default.a, { label: 'Borrar', title: 'Borrar usuario', primary: true, style: styles.flatNew, onClick: this.handleDeleteUser, icon: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_12_material_ui_FontIcon___default.a, { className: 'fa fa-trash', style: { fontSize: 18 } }) })
-                )
-            )] : [__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_10_material_ui_Toolbar__["Toolbar"],
-                { key: 2, style: styles.toolbar },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_10_material_ui_Toolbar__["ToolbarGroup"], { key: 21, firstChild: true }),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    __WEBPACK_IMPORTED_MODULE_10_material_ui_Toolbar__["ToolbarGroup"],
-                    { key: 22 },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* NavLink */],
-                        { to: '/usuarios/nuevo' },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_material_ui_FlatButton___default.a, { label: 'Nuevo', title: 'Nuevo usuario', primary: true, style: styles.flatNew, icon: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_12_material_ui_FontIcon___default.a, { className: 'fa fa-plus-circle', style: { fontSize: 18 } }) })
-                    )
-                )
-            )];
-
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'div',
-                null,
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_material_ui_AppBar___default.a, {
-                    title: 'Usuarios',
-                    iconElementLeft: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', null),
-                    className: 'app-bar no-element-left'
-                }),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    { className: 'container' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        __WEBPACK_IMPORTED_MODULE_6_material_ui_Table__["Table"],
-                        { onRowSelection: this.handleRowSelection },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            __WEBPACK_IMPORTED_MODULE_6_material_ui_Table__["TableHeader"],
-                            null,
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                __WEBPACK_IMPORTED_MODULE_6_material_ui_Table__["TableRow"],
-                                null,
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    __WEBPACK_IMPORTED_MODULE_6_material_ui_Table__["TableHeaderColumn"],
-                                    { colSpan: '3', style: { padding: 0 } },
-                                    toolbar
-                                )
-                            ),
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                __WEBPACK_IMPORTED_MODULE_6_material_ui_Table__["TableRow"],
-                                null,
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    __WEBPACK_IMPORTED_MODULE_6_material_ui_Table__["TableHeaderColumn"],
-                                    null,
-                                    'Nombre y Apellidos'
-                                ),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    __WEBPACK_IMPORTED_MODULE_6_material_ui_Table__["TableHeaderColumn"],
-                                    null,
-                                    'Correo Electr\xF3nico'
-                                ),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    __WEBPACK_IMPORTED_MODULE_6_material_ui_Table__["TableHeaderColumn"],
-                                    null,
-                                    'Perfil'
-                                )
-                            )
-                        ),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            __WEBPACK_IMPORTED_MODULE_6_material_ui_Table__["TableBody"],
-                            { deselectOnClickaway: false },
-                            users
-                        )
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* NavLink */],
-                        { to: '/usuarios/nuevo' },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            __WEBPACK_IMPORTED_MODULE_8_material_ui_FloatingActionButton___default.a,
-                            { title: 'A\xF1adir usuario', style: styles.floating },
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9_material_ui_svg_icons_content_add___default.a, null)
-                        )
-                    )
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11_material_ui_Snackbar___default.a, {
-                    open: this.state.snack.open,
-                    message: this.state.snack.message,
-                    autoHideDuration: 2000,
-                    onRequestClose: this.handleRequestSnackClose
-                }),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    __WEBPACK_IMPORTED_MODULE_7_material_ui_Dialog___default.a,
-                    { actions: actions, modal: false, open: this.state.smShow, onRequestClose: dcmClose },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'p',
-                        null,
-                        '\xBFEst\xE1 seguro de que desea ',
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'b',
-                            null,
-                            'BORRAR'
-                        ),
-                        ' el registro?'
-                    )
-                )
-            );
         }
     }]);
 
@@ -113947,91 +113712,6 @@ CircularProgress.propTypes =  true ? {
   value: _propTypes2.default.number
 } : {};
 exports.default = CircularProgress;
-
-/***/ }),
-/* 726 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Interface_DataTabla__ = __webpack_require__(704);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-
-var ListUsersDataTabla = function (_Component) {
-    _inherits(ListUsersDataTabla, _Component);
-
-    function ListUsersDataTabla(props) {
-        _classCallCheck(this, ListUsersDataTabla);
-
-        var _this = _possibleConstructorReturn(this, (ListUsersDataTabla.__proto__ || Object.getPrototypeOf(ListUsersDataTabla)).call(this, props));
-
-        _this.state = {
-            data: []
-        };
-        return _this;
-    }
-
-    _createClass(ListUsersDataTabla, [{
-        key: 'componentDidMount',
-        value: function componentDidMount() {
-            var _this2 = this;
-
-            axios.get('/users').then(function (response) {
-                _this2.setState({
-                    data: response.data
-                });
-            }).catch(function (error) {
-                error;
-            });
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-
-            var TABLE_COLUMNS = [{
-                key: 'name',
-                label: 'Nombre',
-                sortable: true
-            }, {
-                key: 'email',
-                label: 'Correo electrónico',
-                sortable: true
-            }, {
-                key: 'role.description',
-                label: 'Perfil',
-                sortable: true
-            }];
-
-            if (this.state.data.length == 0) return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', null);
-
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__Interface_DataTabla__["a" /* default */], {
-                singular: "usuario",
-                plural: "usuarios",
-                route: "usuarios",
-                api: "users",
-                columns: TABLE_COLUMNS,
-                data: this.state.data,
-                searchText: "Buscar",
-                multiSelectable: false,
-                importCSV: false
-            });
-        }
-    }]);
-
-    return ListUsersDataTabla;
-}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
-
-/* harmony default export */ __webpack_exports__["a"] = (ListUsersDataTabla);
 
 /***/ })
 /******/ ]);

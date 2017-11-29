@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Switch, NavLink, Link, Redirect } from 'react-rou
 
 import Home from './Home';
 import ListUsers from './Users/ListUsers';
-import ListUsersDataTabla from './Users/ListUsersDataTabla';
 import FormUser from './Users/FormUser';
 import ListRoles from './Roles/ListRoles';
 import FormRole from './Roles/FormRole';
@@ -70,7 +69,6 @@ class App extends React.Component {
                 admin_nestedItems.push(<ListItem key={1} primaryText="Perfiles" containerElement={<Link to="/perfiles" />} leftIcon={<FontIcon className="fa fa-user-circle" />} />);
             }
             admin_nestedItems.push(<ListItem key={2} primaryText="Usuarios" containerElement={<Link to="/usuarios" />} leftIcon={<FontIcon className="fa fa-users" />} />);
-            admin_nestedItems.push(<ListItem key={3} primaryText="Usuarios NTRK" containerElement={<Link to="/usuariosntrk" />} leftIcon={<FontIcon className="fa fa-users" />} />);
 
             return (
                 <BrowserRouter>
@@ -82,7 +80,6 @@ class App extends React.Component {
                             <Switch>
                                 <Route exact path='/' component={User(Home)} />
                                 <Route exact path='/usuarios' component={Admin(ListUsers)} />
-                                <Route exact path='/usuariosntrk' component={Admin(ListUsersDataTabla)} />
                                 <Route exact path='/usuarios/nuevo' render={(props) => <FormUser title="Nuevo" />} />
                                 <Route path='/usuarios/editar/:number' component={Admin(FormUser)} />
                                 <Route exact path='/perfiles' component={Root(ListRoles)} />
