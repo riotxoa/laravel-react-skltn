@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import DataTabla from '../Interface/DataTabla';
 
-class ListClients extends Component {
+class ListUsersDataTabla extends Component {
 
     constructor(props) {
         super(props);
@@ -12,7 +12,7 @@ class ListClients extends Component {
     }
 
     componentDidMount(){
-        axios.get('/clients')
+        axios.get('/users')
         .then(response => {
             this.setState({
                 data: response.data,
@@ -31,12 +31,12 @@ class ListClients extends Component {
             label: 'Nombre',
             sortable: true,
           }, {
-            key: 'address',
-            label: 'Dirección',
+            key: 'email',
+            label: 'Correo electrónico',
             sortable: true,
           }, {
-            key: 'telephone',
-            label: 'Teléfono',
+            key: 'role.description',
+            label: 'Perfil',
             sortable: true,
           }
         ];
@@ -45,18 +45,18 @@ class ListClients extends Component {
 
         return(
             <DataTabla
-                singular={"cliente"}
-                plural={"clientes"}
-                route={"clientes"}
-                api={"clients"}
+                singular={"usuario"}
+                plural={"usuarios"}
+                route={"usuarios"}
+                api={"users"}
                 columns = {TABLE_COLUMNS}
                 data={this.state.data}
                 searchText={"Buscar"}
-                multiSelectable={true}
-                importCSV={true}
+                multiSelectable={false}
+                importCSV={false}
             />
         );
     }
 }
 
-export default ListClients;
+export default ListUsersDataTabla;

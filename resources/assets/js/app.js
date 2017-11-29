@@ -11,6 +11,7 @@ import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import App from './components/App';
+// import App from './components/Main';
 
 ReactDOM.render(
     <MuiThemeProvider>

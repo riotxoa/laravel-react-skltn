@@ -12,5 +12,4 @@ let mix = require('laravel-mix');
  */
 
 mix.react('resources/assets/js/app.js', 'public/js')
-   .js('resources/assets/js/react-bootstrap/react-bootstrap.min.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css');

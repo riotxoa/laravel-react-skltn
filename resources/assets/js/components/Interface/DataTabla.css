@@ -1,0 +1,13 @@
+.sortable-label label {
+    cursor:pointer;
+    font-weight:bolder!important;
+
+    -webkit-transition:all .15s ease-in-out;
+    -moz-transition:all .15s ease-in-out;
+    -ms-transition:all .15s ease-in-out;
+    -o-transition:all .15s ease-in-out;
+    transition:all .15s ease-in-out;
+}
+.sortable-label label:hover {
+    color:#666666!important;
+}

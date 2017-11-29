@@ -134,7 +134,7 @@ class NewClient extends Component {
                         iconElementLeft={<div></div>}
                         className="app-bar no-element-left"
                     />
-                    <div className="container">
+                    <div className="container" style={{maxWidth:'100%'}}>
                         <Link to="/clientes" className="btn btn-success"><FlatButton label="Volver" title="Volver" primary={true} style={style.flat} icon={<FontIcon className="fa fa-step-backward" style={{fontSize:18}} />} /></Link>
                         <ValidatorForm ref="form" onSubmit={this.handleSubmit} onError={errors => console.log(errors)} style={{marginTop:48}}>
                             <Paper zDepth={1} rounded={false} style={{padding:25, paddingBottom:50}} >
