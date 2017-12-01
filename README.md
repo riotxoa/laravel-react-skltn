@@ -72,9 +72,9 @@ From your command line, go to the path or directory where you want to start the 
     ```
 
 # Running the aplication
-    ```
+
     php artisan serve
-    ```
+
 
 Then browse to http://127.0.0.1:8000 and login in with these credentials:
 
