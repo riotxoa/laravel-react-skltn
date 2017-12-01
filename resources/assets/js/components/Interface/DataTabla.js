@@ -65,6 +65,11 @@ class DataTabla extends Component {
         this.handleImportCSV = this.handleImportCSV.bind(this);
         this.handleDownloadTemplate = this.handleDownloadTemplate.bind(this);
         this.handleFilterValueChange = this.handleFilterValueChange.bind(this);
+
+        this.handleHeaderColumnClick = this.handleHeaderColumnClick.bind(this);
+        this.handleDeleteDialogClose = this.handleDeleteDialogClose.bind(this);
+        this.handleUploadDialogClose = this.handleUploadDialogClose.bind(this);
+        this.handleDeleteRows = this.handleDeleteRows.bind(this);
     }
     componentDidMount(){
     }
@@ -160,7 +165,9 @@ class DataTabla extends Component {
         });
     }
     handlePaginationClick(offset) {
-        this.setState({offset});
+        this.setState({
+            offset: offset
+        });
     }
     handleClickSelectFile(event) {
         this.setState({
@@ -219,6 +226,109 @@ class DataTabla extends Component {
             }, 500);
         });
     }
+    handleHeaderColumnClick(event, rowIndex, columnIndex) {
+        var adjustedColumnIndex = columnIndex - 1;
+        var column = this.props.columns[adjustedColumnIndex];
+
+        if (column && column.sortable) {
+            var sort = this.state.sort;
+            var key = column.key;
+            var order = sort.column === key && sort.order === 'asc' ? 'desc' : 'asc';
+            var ordered = _.orderBy(this.state.data, key, order);
+
+            this.setState({
+                data: ordered,
+                sort: {
+                    column: key,
+                    order: order
+                }
+            });
+        }
+    }
+    handleDeleteDialogClose() {
+        this.setState({
+            delete: {
+                dialogShow: false,
+                dialogMessage: '',
+                delete_id: [],
+                delete_index: [],
+            }
+        });
+    };
+    handleUploadDialogClose() {
+        this.setState({
+            upload: {
+                dialogShow: false,
+                file: null,
+                fileName: 'No hay ningún archivo seleccionado'
+            }
+        });
+    };
+    handleDeleteRows() {
+        this.setState({
+            delete: {
+                dialogShow: false,
+                dialogMessage: '',
+                delete_id: [],
+                delete_index: [],
+            }
+        });
+
+        var deletion = this.state.delete;
+
+        if( deletion.delete_id.length > 1 ) {
+            let uri = '/'+this.props.api+'/delete';
+
+            const request = {
+                data: deletion.delete_id
+            };
+            axios.post(uri, request).then((response) => {
+                let dataArr = this.state.data;
+                deletion.delete_index.map((val,key) => {
+                    dataArr.splice(val-key, 1);
+                });
+                this.data = response.data;
+                this.setState({
+                    delete: {
+                        dialogShow: false,
+                        dialogMessage: '',
+                        delete_id: [],
+                        delete_index: [],
+                    },
+                    snack: {
+                        message: this.props.plural.charAt(0).toUpperCase() + this.props.plural.slice(1)+ ' borrados',
+                        open: true
+                    },
+                    selected: [],
+                    data: dataArr,
+                    total: dataArr.length,
+                });
+            });
+        } else {
+            let uri = '/'+this.props.api+'/' + deletion.delete_id;
+
+            axios.delete(uri).then((response) => {
+                let dataArr = this.state.data;
+                dataArr.splice(deletion.delete_index, 1);
+                this.data = response.data;
+                this.setState({
+                    delete: {
+                        dialogShow: false,
+                        dialogMessage: '',
+                        delete_id: [],
+                        delete_index: [],
+                    },
+                    snack: {
+                        message: this.props.singular.charAt(0).toUpperCase() + this.props.singular.slice(1) + ' borrado',
+                        open: true
+                    },
+                    selected: [],
+                    data: dataArr,
+                    total: dataArr.length,
+                });
+            });
+        }
+    }
 
     render() {
         /* CSS Styles */
@@ -251,110 +361,6 @@ class DataTabla extends Component {
             },
         }
 
-        /* Callback functions */
-        const handleHeaderColumnClick = (event, rowIndex, columnIndex) => {
-            var adjustedColumnIndex = columnIndex - 1;
-            var column = this.props.columns[adjustedColumnIndex];
-
-            if (column && column.sortable) {
-                var sort = this.state.sort;
-                var key = column.key;
-                var order = sort.column === key && sort.order === 'asc' ? 'desc' : 'asc';
-                var ordered = _.orderBy(this.state.data, key, order);
-
-                this.setState({
-                    data: ordered,
-                    sort: {
-                        column: key,
-                        order: order
-                    }
-                });
-            }
-        }
-        const handleDeleteDialogClose = () => {
-            this.setState({
-                delete: {
-                    dialogShow: false,
-                    dialogMessage: '',
-                    delete_id: [],
-                    delete_index: [],
-                }
-            });
-        };
-        const handleUploadDialogClose = () => {
-            this.setState({
-                upload: {
-                    dialogShow: false,
-                    file: null,
-                    fileName: 'No hay ningún archivo seleccionado'
-                }
-            });
-        };
-        const handleDeleteRows = () => {
-            this.setState({
-                delete: {
-                    dialogShow: false,
-                    dialogMessage: '',
-                    delete_id: [],
-                    delete_index: [],
-                }
-            });
-
-            var deletion = this.state.delete;
-
-            if( deletion.delete_id.length > 1 ) {
-                let uri = '/'+this.props.api+'/delete';
-
-                const request = {
-                    data: deletion.delete_id
-                };
-                axios.post(uri, request).then((response) => {
-                    let dataArr = this.state.data;
-                    deletion.delete_index.map((val,key) => {
-                        dataArr.splice(val-key, 1);
-                    });
-                    this.data = response.data;
-                    this.setState({
-                        delete: {
-                            dialogShow: false,
-                            dialogMessage: '',
-                            delete_id: [],
-                            delete_index: [],
-                        },
-                        snack: {
-                            message: this.props.plural.charAt(0).toUpperCase() + this.props.plural.slice(1)+ ' borrados',
-                            open: true
-                        },
-                        selected: [],
-                        data: dataArr,
-                        total: dataArr.length,
-                    });
-                });
-            } else {
-                let uri = '/'+this.props.api+'/' + deletion.delete_id;
-
-                axios.delete(uri).then((response) => {
-                    let dataArr = this.state.data;
-                    dataArr.splice(deletion.delete_index, 1);
-                    this.data = response.data;
-                    this.setState({
-                        delete: {
-                            dialogShow: false,
-                            dialogMessage: '',
-                            delete_id: [],
-                            delete_index: [],
-                        },
-                        snack: {
-                            message: this.props.singular.charAt(0).toUpperCase() + this.props.singular.slice(1) + ' borrado',
-                            open: true
-                        },
-                        selected: [],
-                        data: dataArr,
-                        total: dataArr.length,
-                    });
-                });
-            }
-        }
         const getCell = (value) => {
             let ret = [];
             this.props.columns.map((val, key) => {
@@ -430,6 +436,7 @@ class DataTabla extends Component {
                         limit={this.state.perPage}
                         total={this.state.total}
                         onClick={(e, offset) => this.handlePaginationClick(offset)}
+                        disableTouchRipple={true}
                     />
                 </ToolbarGroup>
                 <ToolbarGroup key={110}>
@@ -463,11 +470,11 @@ class DataTabla extends Component {
             );
         });
         const deleteDialogActions = [
-            <RaisedButton label="Cancelar" style={styles.dialog} keyboardFocused={true} onClick={handleDeleteDialogClose} />,
-            <RaisedButton label="Borrar" primary={true} style={styles.dialog} onClick={handleDeleteRows} />,
+            <RaisedButton label="Cancelar" style={styles.dialog} keyboardFocused={true} onClick={this.handleDeleteDialogClose} />,
+            <RaisedButton label="Borrar" primary={true} style={styles.dialog} onClick={this.handleDeleteRows} />,
         ];
         const uploadDialogActions = [
-            <RaisedButton label="Cancelar" style={styles.dialog} keyboardFocused={true} onClick={handleUploadDialogClose} />,
+            <RaisedButton label="Cancelar" style={styles.dialog} keyboardFocused={true} onClick={this.handleUploadDialogClose} />,
             <RaisedButton label="Importar" primary={true} style={styles.dialog} onClick={this.handleImportCSV} />,
         ]
 
@@ -488,7 +495,7 @@ class DataTabla extends Component {
                                     {toptoolbar}
                                 </TableHeaderColumn>
                             </TableRow>
-                            <TableRow onCellClick={handleHeaderColumnClick}>
+                            <TableRow onCellClick={this.handleHeaderColumnClick}>
                                 {columns}
                             </TableRow>
                         </TableHeader>
@@ -502,10 +509,10 @@ class DataTabla extends Component {
                         message={this.state.snack.message}
                         autoHideDuration={5000}
                     />
-                    <Dialog actions={deleteDialogActions} modal={false} open={this.state.delete.dialogShow} onRequestClose={handleDeleteDialogClose} style={{textAlign:'center'}}>
+                    <Dialog actions={deleteDialogActions} modal={false} open={this.state.delete.dialogShow} onRequestClose={this.handleDeleteDialogClose} style={{textAlign:'center'}}>
                         <p>{this.state.delete.dialogMessage}</p>
                     </Dialog>
-                    <Dialog actions={uploadDialogActions} modal={false} open={this.state.upload.dialogShow} onRequestClose={handleUploadDialogClose} style={{textAlign:'center'}}>
+                    <Dialog actions={uploadDialogActions} modal={false} open={this.state.upload.dialogShow} onRequestClose={this.handleUploadDialogClose} style={{textAlign:'center'}}>
                         <div style={{textAlign:'left'}}>
                             <p>Para hacer una carga masiva de <strong>{this.props.plural.toUpperCase()}</strong> debe subir un fichero CSV con el formato adecuado.</p>
                             <p>Descargue la plantilla con el formato para <strong>{this.props.plural.toUpperCase()}</strong> y, una vez rellenada con los datos que desea incorporar a la base de datos, pulse el botón <strong>"Seleccionar Archivo"</strong> para seleccionar el fichero CSV y a continuación <strong>"Importar"</strong>.</p>

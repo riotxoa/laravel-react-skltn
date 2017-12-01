@@ -16054,6 +16054,11 @@ var DataTabla = function (_Component) {
         _this.handleImportCSV = _this.handleImportCSV.bind(_this);
         _this.handleDownloadTemplate = _this.handleDownloadTemplate.bind(_this);
         _this.handleFilterValueChange = _this.handleFilterValueChange.bind(_this);
+
+        _this.handleHeaderColumnClick = _this.handleHeaderColumnClick.bind(_this);
+        _this.handleDeleteDialogClose = _this.handleDeleteDialogClose.bind(_this);
+        _this.handleUploadDialogClose = _this.handleUploadDialogClose.bind(_this);
+        _this.handleDeleteRows = _this.handleDeleteRows.bind(_this);
         return _this;
     }
 
@@ -16168,7 +16173,9 @@ var DataTabla = function (_Component) {
     }, {
         key: 'handlePaginationClick',
         value: function handlePaginationClick(offset) {
-            this.setState({ offset: offset });
+            this.setState({
+                offset: offset
+            });
         }
     }, {
         key: 'handleClickSelectFile',
@@ -16238,9 +16245,122 @@ var DataTabla = function (_Component) {
             });
         }
     }, {
+        key: 'handleHeaderColumnClick',
+        value: function handleHeaderColumnClick(event, rowIndex, columnIndex) {
+            var adjustedColumnIndex = columnIndex - 1;
+            var column = this.props.columns[adjustedColumnIndex];
+
+            if (column && column.sortable) {
+                var sort = this.state.sort;
+                var key = column.key;
+                var order = sort.column === key && sort.order === 'asc' ? 'desc' : 'asc';
+                var ordered = _.orderBy(this.state.data, key, order);
+
+                this.setState({
+                    data: ordered,
+                    sort: {
+                        column: key,
+                        order: order
+                    }
+                });
+            }
+        }
+    }, {
+        key: 'handleDeleteDialogClose',
+        value: function handleDeleteDialogClose() {
+            this.setState({
+                delete: {
+                    dialogShow: false,
+                    dialogMessage: '',
+                    delete_id: [],
+                    delete_index: []
+                }
+            });
+        }
+    }, {
+        key: 'handleUploadDialogClose',
+        value: function handleUploadDialogClose() {
+            this.setState({
+                upload: {
+                    dialogShow: false,
+                    file: null,
+                    fileName: 'No hay ningún archivo seleccionado'
+                }
+            });
+        }
+    }, {
+        key: 'handleDeleteRows',
+        value: function handleDeleteRows() {
+            var _this4 = this;
+
+            this.setState({
+                delete: {
+                    dialogShow: false,
+                    dialogMessage: '',
+                    delete_id: [],
+                    delete_index: []
+                }
+            });
+
+            var deletion = this.state.delete;
+
+            if (deletion.delete_id.length > 1) {
+                var uri = '/' + this.props.api + '/delete';
+
+                var request = {
+                    data: deletion.delete_id
+                };
+                __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post(uri, request).then(function (response) {
+                    var dataArr = _this4.state.data;
+                    deletion.delete_index.map(function (val, key) {
+                        dataArr.splice(val - key, 1);
+                    });
+                    _this4.data = response.data;
+                    _this4.setState({
+                        delete: {
+                            dialogShow: false,
+                            dialogMessage: '',
+                            delete_id: [],
+                            delete_index: []
+                        },
+                        snack: {
+                            message: _this4.props.plural.charAt(0).toUpperCase() + _this4.props.plural.slice(1) + ' borrados',
+                            open: true
+                        },
+                        selected: [],
+                        data: dataArr,
+                        total: dataArr.length
+                    });
+                });
+            } else {
+                var _uri = '/' + this.props.api + '/' + deletion.delete_id;
+
+                __WEBPACK_IMPORTED_MODULE_2_axios___default.a.delete(_uri).then(function (response) {
+                    var dataArr = _this4.state.data;
+                    dataArr.splice(deletion.delete_index, 1);
+                    _this4.data = response.data;
+                    _this4.setState({
+                        delete: {
+                            dialogShow: false,
+                            dialogMessage: '',
+                            delete_id: [],
+                            delete_index: []
+                        },
+                        snack: {
+                            message: _this4.props.singular.charAt(0).toUpperCase() + _this4.props.singular.slice(1) + ' borrado',
+                            open: true
+                        },
+                        selected: [],
+                        data: dataArr,
+                        total: dataArr.length
+                    });
+                });
+            }
+        }
+    }, {
         key: 'render',
         value: function render() {
-            var _this4 = this;
+            var _this5 = this;
 
             /* CSS Styles */
             var styles = {
@@ -16270,115 +16390,12 @@ var DataTabla = function (_Component) {
                 perPageItem: {
                     textAlign: 'left'
                 }
-
-                /* Callback functions */
-            };var handleHeaderColumnClick = function handleHeaderColumnClick(event, rowIndex, columnIndex) {
-                var adjustedColumnIndex = columnIndex - 1;
-                var column = _this4.props.columns[adjustedColumnIndex];
-
-                if (column && column.sortable) {
-                    var sort = _this4.state.sort;
-                    var key = column.key;
-                    var order = sort.column === key && sort.order === 'asc' ? 'desc' : 'asc';
-                    var ordered = _.orderBy(_this4.state.data, key, order);
-
-                    _this4.setState({
-                        data: ordered,
-                        sort: {
-                            column: key,
-                            order: order
-                        }
-                    });
-                }
             };
-            var handleDeleteDialogClose = function handleDeleteDialogClose() {
-                _this4.setState({
-                    delete: {
-                        dialogShow: false,
-                        dialogMessage: '',
-                        delete_id: [],
-                        delete_index: []
-                    }
-                });
-            };
-            var handleUploadDialogClose = function handleUploadDialogClose() {
-                _this4.setState({
-                    upload: {
-                        dialogShow: false,
-                        file: null,
-                        fileName: 'No hay ningún archivo seleccionado'
-                    }
-                });
-            };
-            var handleDeleteRows = function handleDeleteRows() {
-                _this4.setState({
-                    delete: {
-                        dialogShow: false,
-                        dialogMessage: '',
-                        delete_id: [],
-                        delete_index: []
-                    }
-                });
 
-                var deletion = _this4.state.delete;
-
-                if (deletion.delete_id.length > 1) {
-                    var uri = '/' + _this4.props.api + '/delete';
-
-                    var request = {
-                        data: deletion.delete_id
-                    };
-                    __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post(uri, request).then(function (response) {
-                        var dataArr = _this4.state.data;
-                        deletion.delete_index.map(function (val, key) {
-                            dataArr.splice(val - key, 1);
-                        });
-                        _this4.data = response.data;
-                        _this4.setState({
-                            delete: {
-                                dialogShow: false,
-                                dialogMessage: '',
-                                delete_id: [],
-                                delete_index: []
-                            },
-                            snack: {
-                                message: _this4.props.plural.charAt(0).toUpperCase() + _this4.props.plural.slice(1) + ' borrados',
-                                open: true
-                            },
-                            selected: [],
-                            data: dataArr,
-                            total: dataArr.length
-                        });
-                    });
-                } else {
-                    var _uri = '/' + _this4.props.api + '/' + deletion.delete_id;
-
-                    __WEBPACK_IMPORTED_MODULE_2_axios___default.a.delete(_uri).then(function (response) {
-                        var dataArr = _this4.state.data;
-                        dataArr.splice(deletion.delete_index, 1);
-                        _this4.data = response.data;
-                        _this4.setState({
-                            delete: {
-                                dialogShow: false,
-                                dialogMessage: '',
-                                delete_id: [],
-                                delete_index: []
-                            },
-                            snack: {
-                                message: _this4.props.singular.charAt(0).toUpperCase() + _this4.props.singular.slice(1) + ' borrado',
-                                open: true
-                            },
-                            selected: [],
-                            data: dataArr,
-                            total: dataArr.length
-                        });
-                    });
-                }
-            };
             var getCell = function getCell(value) {
                 var ret = [];
-                _this4.props.columns.map(function (val, key) {
-                    var index = _this4.props.columns[key].key;
+                _this5.props.columns.map(function (val, key) {
+                    var index = _this5.props.columns[key].key;
                     if (index.indexOf(".") > -1) {
                         var pos = index.indexOf(".");
                         var index01 = index.substring(0, pos);
@@ -16481,8 +16498,9 @@ var DataTabla = function (_Component) {
                         limit: this.state.perPage,
                         total: this.state.total,
                         onClick: function onClick(e, offset) {
-                            return _this4.handlePaginationClick(offset);
-                        }
+                            return _this5.handlePaginationClick(offset);
+                        },
+                        disableTouchRipple: true
                     })
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -16517,16 +16535,16 @@ var DataTabla = function (_Component) {
                 );
             });
             var rows = this.state.data.slice(this.state.offset, this.state.offset + this.state.perPage).map(function (val, key) {
-                key += _this4.state.offset;
+                key += _this5.state.offset;
                 var cells = getCell(val);
                 return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     __WEBPACK_IMPORTED_MODULE_8_material_ui_Table__["TableRow"],
-                    { key: key, selected: _this4.isSelected(key) },
+                    { key: key, selected: _this5.isSelected(key) },
                     cells
                 );
             });
-            var deleteDialogActions = [__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_material_ui_RaisedButton___default.a, { label: 'Cancelar', style: styles.dialog, keyboardFocused: true, onClick: handleDeleteDialogClose }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_material_ui_RaisedButton___default.a, { label: 'Borrar', primary: true, style: styles.dialog, onClick: handleDeleteRows })];
-            var uploadDialogActions = [__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_material_ui_RaisedButton___default.a, { label: 'Cancelar', style: styles.dialog, keyboardFocused: true, onClick: handleUploadDialogClose }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_material_ui_RaisedButton___default.a, { label: 'Importar', primary: true, style: styles.dialog, onClick: this.handleImportCSV })];
+            var deleteDialogActions = [__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_material_ui_RaisedButton___default.a, { label: 'Cancelar', style: styles.dialog, keyboardFocused: true, onClick: this.handleDeleteDialogClose }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_material_ui_RaisedButton___default.a, { label: 'Borrar', primary: true, style: styles.dialog, onClick: this.handleDeleteRows })];
+            var uploadDialogActions = [__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_material_ui_RaisedButton___default.a, { label: 'Cancelar', style: styles.dialog, keyboardFocused: true, onClick: this.handleUploadDialogClose }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_material_ui_RaisedButton___default.a, { label: 'Importar', primary: true, style: styles.dialog, onClick: this.handleImportCSV })];
 
             /* Render return */
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -16557,7 +16575,7 @@ var DataTabla = function (_Component) {
                             ),
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 __WEBPACK_IMPORTED_MODULE_8_material_ui_Table__["TableRow"],
-                                { onCellClick: handleHeaderColumnClick },
+                                { onCellClick: this.handleHeaderColumnClick },
                                 columns
                             )
                         ),
@@ -16575,7 +16593,7 @@ var DataTabla = function (_Component) {
                     }),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         __WEBPACK_IMPORTED_MODULE_12_material_ui_Dialog___default.a,
-                        { actions: deleteDialogActions, modal: false, open: this.state.delete.dialogShow, onRequestClose: handleDeleteDialogClose, style: { textAlign: 'center' } },
+                        { actions: deleteDialogActions, modal: false, open: this.state.delete.dialogShow, onRequestClose: this.handleDeleteDialogClose, style: { textAlign: 'center' } },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'p',
                             null,
@@ -16584,7 +16602,7 @@ var DataTabla = function (_Component) {
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         __WEBPACK_IMPORTED_MODULE_12_material_ui_Dialog___default.a,
-                        { actions: uploadDialogActions, modal: false, open: this.state.upload.dialogShow, onRequestClose: handleUploadDialogClose, style: { textAlign: 'center' } },
+                        { actions: uploadDialogActions, modal: false, open: this.state.upload.dialogShow, onRequestClose: this.handleUploadDialogClose, style: { textAlign: 'center' } },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'div',
                             { style: { textAlign: 'left' } },
