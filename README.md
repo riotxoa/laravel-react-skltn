@@ -63,7 +63,7 @@ From your command line, go to the path or directory where you want to start the 
 6. Seed the database (Roles, Users and Clients tables):
 
     ```
-    php artisan db:seed --class=DatabaseTableSeeder
+    php artisan db:seed --class=DatabaseSeeder
     ```
 
 7. Before using Laravel's encrypter, you must set a key option in config/app.php configuration file:
