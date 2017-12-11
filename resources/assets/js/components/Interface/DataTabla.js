@@ -130,14 +130,25 @@ class DataTabla extends Component {
     }
     handleDeleteRow() {
         if(this.state.selected.length) {
-            let message = (this.state.selected.length > 1 ? "¿Está seguro de que desea BORRAR los registros seleccionados?" : "¿Está seguro de que desea BORRAR el registro seleccionado?");
-
+            let message;
             let array_id = [];
             let array_index = [];
-            this.state.selected.map((val,key) => {
-                array_id.push(this.state.data[val].id);
-                array_index.push(val);
-            });
+
+            if(this.state.selected != 'all') {
+                message = (this.state.selected.length > 1 ? "¿Está seguro de que desea BORRAR los registros seleccionados?" : "¿Está seguro de que desea BORRAR el registro seleccionado?");
+
+                this.state.selected.map((val,key) => {
+                    array_id.push(this.state.data[val].id);
+                    array_index.push(val);
+                });
+            } else {
+                message = "¿Está seguro de que desea borrar TODOS los registros?";
+
+                this.state.data.map((val,key) => {
+                    array_id.push(val.id);
+                    array_index.push(key);
+                });
+            }
 
             this.setState({
                 delete: {
