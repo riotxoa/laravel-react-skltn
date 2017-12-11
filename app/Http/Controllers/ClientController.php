@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use App\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
+use App\Http\Controllers\Traits\CsvTrait;
 
 class ClientController extends Controller
 {
+    use CsvTrait;
+
+    protected $csvFileName = 'clients';
 
     /**
      * Create a new controller instance.
@@ -143,58 +147,16 @@ class ClientController extends Controller
          return $this->index($request);
      }
 
-     /**
-      * Store a newly created resource in storage.
-      *
-      * @param  \Illuminate\Http\Request  $request
-      * @return \Illuminate\Http\Response
-      */
-     public function uploadCSV(Request $request)
-     {
-         if($request->hasFile('file')) {
-             $path = $request->file('file')->getRealPath();
-             $data = \Excel::load($path, function($reader){
-
-             })->get();
-             if(!empty($data) && $data->count()) {
-                 $data = $data->toArray();
-                 for($i = 0; $i < count($data); $i++) {
-                     $dataImported[] = $data[$i];
-                 }
-             }
-             Client::insert($dataImported);
-
-             return $this->index($request);
-         }
-
-         return response()->json("Error en la subida. Vuelva a intentarlo");
-    }
-
-     /**
-      * export a file in storage.
-      *
-      * @return \Illuminate\Http\Response
-      */
-     public function downloadCSV() {
-
-         $clients = Client::get(['name', 'address', 'telephone']);
-
-         $filepath= \Excel::create('clients', function($excel) use($clients) {
-             $excel->sheet('ExportFile', function($sheet) use($clients) {
-                 $sheet->fromArray($clients);
-             });
-         })->store('csv', public_path('exports'), true);
-
-         $publicpath = public_path();
-         $file = str_replace($publicpath, '', $filepath['full']);
-
-         return response()->json($file);
+     public function getCsvFileName() {
+         return $this->csvFileName;
      }
 
-     public function deleteCSV() {
-         $file = public_path('exports') . "/clients.csv";
-         \File::delete($file);
-         return response()->json($file . " file deleted");
+     public function insertCsvFields($dataImported) {
+         Client::insert($dataImported);
+     }
+
+     public function getCsvFields() {
+         return Client::get(['name', 'address', 'telephone']);
      }
 
 }
