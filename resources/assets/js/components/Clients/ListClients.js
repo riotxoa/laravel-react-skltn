@@ -14,8 +14,14 @@ class ListClients extends Component {
     componentDidMount(){
         axios.get('/clients')
         .then(response => {
+            var _data = [];
+            if(response.data.length > 0) {
+                _data = response.data;
+            } else {
+                _data = ['']
+            }
             this.setState({
-                data: response.data,
+                data: _data,
             });
         })
         .catch(function (error) {
