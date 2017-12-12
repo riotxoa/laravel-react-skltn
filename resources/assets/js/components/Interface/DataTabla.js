@@ -380,9 +380,15 @@ class DataTabla extends Component {
                     var pos = index.indexOf(".");
                     var index01 = index.substring(0,pos);
                     var index02 = index.substring(pos+1, index.length);
-                    ret[key] = <TableRowColumn key={key}>{value[index01][index02]}</TableRowColumn>;
+                    if(val.toFixed)
+                        ret[key] = <TableRowColumn key={key} colSpan={val.colspan} style={val.style}>{value[index01][index02].toFixed(val.toFixed)}</TableRowColumn>;
+                    else
+                        ret[key] = <TableRowColumn key={key} colSpan={val.colspan} style={val.style}>{value[index01][index02]}</TableRowColumn>;
                 } else {
-                    ret[key] = <TableRowColumn key={key}>{value[index]}</TableRowColumn>;
+                    if(val.toFixed)
+                        ret[key] = <TableRowColumn key={key} colSpan={val.colspan} style={val.style}>{value[index].toFixed(val.toFixed)}</TableRowColumn>;
+                    else
+                        ret[key] = <TableRowColumn key={key} colSpan={val.colspan} style={val.style}>{value[index]}</TableRowColumn>;
                 }
             });
             return ret;
@@ -464,13 +470,22 @@ class DataTabla extends Component {
                 </ToolbarGroup>
             </Toolbar>
         ];
+
+        var headerColSpan = 0;
+
         const columns = this.props.columns.map((val,key) => {
             var columnClass = (true === val.sortable ? 'sortable-label' : '');
             var columnIcon  = (true === val.sortable ? <FontIcon className="fa fa-sort" style={{fontSize:14, color:'efefef',marginLeft:5}} /> : '');
+
+            headerColSpan += (val.colspan ? parseInt(val.colspan) : 0);
+
             return(
-                <TableHeaderColumn key={key} className={columnClass}><label>{val.label}{columnIcon}</label></TableHeaderColumn>
+                <TableHeaderColumn colSpan={val.colspan} key={key} className={columnClass} style={val.style}><label>{val.label}{columnIcon}</label></TableHeaderColumn>
             );
         });
+
+        if(!headerColSpan) headerColSpan = this.props.columns.length;
+
         const rows = this.state.data.slice(this.state.offset, this.state.offset+this.state.perPage).map((val, key) => {
             key += this.state.offset;
             const cells = getCell(val);
@@ -502,7 +517,7 @@ class DataTabla extends Component {
                     <Table onRowSelection={this.handleRowSelection} multiSelectable={this.props.multiSelectable}>
                         <TableHeader>
                             <TableRow>
-                                <TableHeaderColumn colSpan={this.props.columns.length} style={{padding:0}}>
+                                <TableHeaderColumn colSpan={headerColSpan} style={{padding:0}}>
                                     {toptoolbar}
                                 </TableHeaderColumn>
                             </TableRow>

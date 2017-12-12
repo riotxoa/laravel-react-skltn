@@ -43,6 +43,11 @@ class ListClients extends Component {
           }, {
             key: 'telephone',
             label: 'Teléfono',
+            // toFixed: 2,
+            // colspan: '2',
+            // style: {
+            //     textAlign:'right',
+            // },
             sortable: true,
           }
         ];
