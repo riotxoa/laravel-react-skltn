@@ -90,8 +90,6 @@ class DataTabla extends Component {
             message = "1 fila seleccionada";
         }
 
-
-
         let _selectedRows = [];
         let offset = this.state.offset;
         selectedRows.map((val,key) => {
