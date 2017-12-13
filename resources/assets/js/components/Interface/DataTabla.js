@@ -90,8 +90,16 @@ class DataTabla extends Component {
             message = "1 fila seleccionada";
         }
 
+
+
+        let _selectedRows = [];
+        let offset = this.state.offset;
+        selectedRows.map((val,key) => {
+            _selectedRows.push(val+offset);
+        })
+
         this.setState({
-            selected: selectedRows,
+            selected: _selectedRows,
             snack: {
                 open: true,
                 message: message,
@@ -177,6 +185,7 @@ class DataTabla extends Component {
     }
     handlePaginationClick(offset) {
         this.setState({
+            selected: [],
             offset: offset
         });
     }
