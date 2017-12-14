@@ -390,7 +390,7 @@ class DataTabla extends Component {
             let ret = [];
             this.props.columns.map((val, key) => {
                 var index = this.props.columns[key].key;
-                if (index.indexOf(".") > -1) {
+                if (index.indexOf(".") > -1 && value) {
                     var pos = index.indexOf(".");
                     var index01 = index.substring(0,pos);
                     var index02 = index.substring(pos+1, index.length);
