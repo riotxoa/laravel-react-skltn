@@ -10035,10 +10035,15 @@ var DataTabla = function (_Component) {
             }
 
             var _selectedRows = [];
-            var offset = this.state.offset;
-            selectedRows.map(function (val, key) {
-                _selectedRows.push(val + offset);
-            });
+
+            if ('all' === selectedRows || 'none' === selectedRows) {
+                _selectedRows = selectedRows;
+            } else {
+                var offset = this.state.offset;
+                selectedRows.map(function (val, key) {
+                    _selectedRows.push(val + offset);
+                });
+            }
 
             this.setState({
                 selected: _selectedRows,

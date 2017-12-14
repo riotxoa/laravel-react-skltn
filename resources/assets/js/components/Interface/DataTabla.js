@@ -91,10 +91,15 @@ class DataTabla extends Component {
         }
 
         let _selectedRows = [];
-        let offset = this.state.offset;
-        selectedRows.map((val,key) => {
-            _selectedRows.push(val+offset);
-        })
+
+        if( 'all' === selectedRows || 'none' === selectedRows ) {
+            _selectedRows = selectedRows;
+        } else {
+            let offset = this.state.offset;
+            selectedRows.map((val,key) => {
+                _selectedRows.push(val+offset);
+            })
+        }
 
         this.setState({
             selected: _selectedRows,
