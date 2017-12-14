@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DataTabla from '../Interface/DataTabla';
+import DataTablaLoading from '../Interface/DataTablaLoading';
 
 class ListUsers extends Component {
 
@@ -41,7 +42,10 @@ class ListUsers extends Component {
           }
         ];
 
-        if (this.state.data.length == 0) return(<div></div>);
+        if (this.state.data.length == 0)
+            return(
+                <DataTablaLoading title={"usuarios"} />
+            );
 
         return(
             <DataTabla
