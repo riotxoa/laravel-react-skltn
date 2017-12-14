@@ -19,6 +19,8 @@ import FlatPagination from 'material-ui-flat-pagination';
 import CircularProgress from 'material-ui/CircularProgress';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
+import ActionDelete from 'material-ui/svg-icons/action/delete';
+import ActionEdit from 'material-ui/svg-icons/editor/mode-edit';
 
 class DataTabla extends Component {
 
@@ -482,6 +484,37 @@ class DataTabla extends Component {
                 </ToolbarGroup>
             </Toolbar>
         ];
+        var floatingbuttons = (this.state.selected.length ?
+            this.state.selected.length > 1 ?
+                [
+                    <div key={101} style={styles.floating}>
+                        <FloatingActionButton title={"Borrar "+this.props.singular} onClick={this.handleDeleteRow} style={{marginLeft:'10px'}}>
+                            <ActionDelete />
+                        </FloatingActionButton>
+                    </div>
+                ]
+            :
+                [
+                    <div key={102} style={styles.floating}>
+                        <NavLink to={"/"+this.props.route+"/editar/"+this.state.data[this.state.selected].id}>
+                            <FloatingActionButton title={"Editar "+this.props.singular}>
+                                <ActionEdit />
+                            </FloatingActionButton>
+                        </NavLink>
+                        <FloatingActionButton title={"Borrar "+this.props.singular} onClick={this.handleDeleteRow} style={{marginLeft:'10px'}}>
+                            <ActionDelete />
+                        </FloatingActionButton>
+                    </div>
+                ]
+        :
+            [
+                <NavLink to={"/"+this.props.route+"/nuevo"} key={103}>
+                    <FloatingActionButton title={"Añadir "+this.props.singular} style={styles.floating}>
+                        <ContentAdd />
+                    </FloatingActionButton>
+                </NavLink>
+            ]
+        );
 
         var headerColSpan = 0;
 
@@ -565,11 +598,7 @@ class DataTabla extends Component {
                         <div style={{marginTop:-24}}></div>
                     </Dialog>
                 </div>
-                <NavLink to={"/"+this.props.route+"/nuevo"}>
-                    <FloatingActionButton title={"Añadir "+this.props.singular} style={styles.floating}>
-                        <ContentAdd />
-                    </FloatingActionButton>
-                </NavLink>
+                {floatingbuttons}
             </div>
         );
     }

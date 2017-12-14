@@ -9924,6 +9924,10 @@ exports.default = function (arr) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_material_ui_FloatingActionButton___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_17_material_ui_FloatingActionButton__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_material_ui_svg_icons_content_add__ = __webpack_require__(587);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_material_ui_svg_icons_content_add___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_18_material_ui_svg_icons_content_add__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_material_ui_svg_icons_action_delete__ = __webpack_require__(643);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_material_ui_svg_icons_action_delete___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_19_material_ui_svg_icons_action_delete__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20_material_ui_svg_icons_editor_mode_edit__ = __webpack_require__(644);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20_material_ui_svg_icons_editor_mode_edit___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_20_material_ui_svg_icons_editor_mode_edit__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -9931,6 +9935,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
 
 
 
@@ -10499,6 +10505,40 @@ var DataTabla = function (_Component) {
                     )
                 )
             )];
+            var floatingbuttons = this.state.selected.length ? this.state.selected.length > 1 ? [__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { key: 101, style: styles.floating },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    __WEBPACK_IMPORTED_MODULE_17_material_ui_FloatingActionButton___default.a,
+                    { title: "Borrar " + this.props.singular, onClick: this.handleDeleteRow, style: { marginLeft: '10px' } },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_19_material_ui_svg_icons_action_delete___default.a, null)
+                )
+            )] : [__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { key: 102, style: styles.floating },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* NavLink */],
+                    { to: "/" + this.props.route + "/editar/" + this.state.data[this.state.selected].id },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        __WEBPACK_IMPORTED_MODULE_17_material_ui_FloatingActionButton___default.a,
+                        { title: "Editar " + this.props.singular },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_20_material_ui_svg_icons_editor_mode_edit___default.a, null)
+                    )
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    __WEBPACK_IMPORTED_MODULE_17_material_ui_FloatingActionButton___default.a,
+                    { title: "Borrar " + this.props.singular, onClick: this.handleDeleteRow, style: { marginLeft: '10px' } },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_19_material_ui_svg_icons_action_delete___default.a, null)
+                )
+            )] : [__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* NavLink */],
+                { to: "/" + this.props.route + "/nuevo", key: 103 },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    __WEBPACK_IMPORTED_MODULE_17_material_ui_FloatingActionButton___default.a,
+                    { title: "Añadir " + this.props.singular, style: styles.floating },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_18_material_ui_svg_icons_content_add___default.a, null)
+                )
+            )];
 
             var headerColSpan = 0;
 
@@ -10648,15 +10688,7 @@ var DataTabla = function (_Component) {
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { style: { marginTop: -24 } })
                     )
                 ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* NavLink */],
-                    { to: "/" + this.props.route + "/nuevo" },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        __WEBPACK_IMPORTED_MODULE_17_material_ui_FloatingActionButton___default.a,
-                        { title: "Añadir " + this.props.singular, style: styles.floating },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_18_material_ui_svg_icons_content_add___default.a, null)
-                    )
-                )
+                floatingbuttons
             );
         }
     }]);
@@ -114727,6 +114759,88 @@ exports.default = makeSelectable;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 637 */,
+/* 638 */,
+/* 639 */,
+/* 640 */,
+/* 641 */,
+/* 642 */,
+/* 643 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _pure = __webpack_require__(29);
+
+var _pure2 = _interopRequireDefault(_pure);
+
+var _SvgIcon = __webpack_require__(30);
+
+var _SvgIcon2 = _interopRequireDefault(_SvgIcon);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ActionDelete = function ActionDelete(props) {
+  return _react2.default.createElement(
+    _SvgIcon2.default,
+    props,
+    _react2.default.createElement('path', { d: 'M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z' })
+  );
+};
+ActionDelete = (0, _pure2.default)(ActionDelete);
+ActionDelete.displayName = 'ActionDelete';
+ActionDelete.muiName = 'SvgIcon';
+
+exports.default = ActionDelete;
+
+/***/ }),
+/* 644 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _pure = __webpack_require__(29);
+
+var _pure2 = _interopRequireDefault(_pure);
+
+var _SvgIcon = __webpack_require__(30);
+
+var _SvgIcon2 = _interopRequireDefault(_SvgIcon);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var EditorModeEdit = function EditorModeEdit(props) {
+  return _react2.default.createElement(
+    _SvgIcon2.default,
+    props,
+    _react2.default.createElement('path', { d: 'M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z' })
+  );
+};
+EditorModeEdit = (0, _pure2.default)(EditorModeEdit);
+EditorModeEdit.displayName = 'EditorModeEdit';
+EditorModeEdit.muiName = 'SvgIcon';
+
+exports.default = EditorModeEdit;
 
 /***/ })
 /******/ ]);
